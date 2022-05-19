@@ -1,12 +1,14 @@
 using System.Collections.Generic;
+using System;
 
 namespace RoleplayGame
 {
     public abstract class Character
-    {
+    {                
         protected int health = 100;
         protected List<IItem> items = new List<IItem>();
         protected int victorypoints = 0;
+        public string side{ get; protected set; }
 
         protected Character(string name)
         {
@@ -89,9 +91,11 @@ namespace RoleplayGame
 
         public virtual void ReceiveAttack(Character attacker)
         {
-            if (this.DefenseValue < attacker.AttackValue)
+            int damage = attacker.AttackValue;
+            if (this.DefenseValue < damage)
             {
-                this.Health -= attacker.AttackValue - this.DefenseValue;
+                this.Health -= damage - this.DefenseValue;
+                //Console.WriteLine($"{attacker.Name} attacks {this.Name} with ⚔️ {damage}");
             }
         }
     }

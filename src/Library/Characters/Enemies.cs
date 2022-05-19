@@ -1,12 +1,13 @@
 namespace RoleplayGame
 {
-    public abstract class Enemies : Character
+    public class Enemies : Character
     {
+
         protected Enemies(string name)
         : base(name)
         {
-
+            this.side = "Enemy";
         }
-
+    
     }
 }

@@ -4,9 +4,11 @@ namespace RoleplayGame
 {
     public class Assasin : Enemies
     {
+        
         public Assasin(string name)
         : base(name)
-        { 
+        {
+            this.victorypoints = 12;
             this.AddItem(new Dagger());
             this.AddItem(new LeatherArmor());
         }
@@ -17,7 +19,6 @@ namespace RoleplayGame
             {
                 Random CriticalChance = new Random();
                 int value = 0;
-                int criticalvalue = 0;
                 foreach (IItem item in this.items)
                 {
                     if (item is IAttackItem)
@@ -27,15 +28,14 @@ namespace RoleplayGame
                 }
                 if (CriticalChance.Next(1,11) <= 4)
                 {
-                    criticalvalue = value * 2;
-                    Console.WriteLine($"{this.Name} ha asestado un golpe critico de {criticalvalue}⚔️");
-                    return criticalvalue;
+                    value = value * 2;
+                    return value;
+                    
                 }
                 else
                 {
                     return value;
                 }
-                
             }
         }
 

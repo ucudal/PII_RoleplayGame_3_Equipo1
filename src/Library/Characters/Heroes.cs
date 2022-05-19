@@ -1,6 +1,6 @@
 namespace RoleplayGame
 {
-    public abstract class Heroes : Character
+    public class Heroes : Character
     {
         protected Heroes(string name)
         : base(name)
@@ -12,5 +12,7 @@ namespace RoleplayGame
         {
             this.VictoryPoints += defeatedEnemy.VictoryPoints;
         }
+
+        
     }
 }
