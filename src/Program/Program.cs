@@ -19,13 +19,22 @@ namespace Program
             Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
             Console.WriteLine($"Gandalf attacks Gimli with ⚔️ {gandalf.AttackValue}");
 
-            gimli.ReceiveAttack(gandalf.AttackValue);
+            gimli.ReceiveAttack(gandalf);
 
             Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
 
             gimli.Cure();
 
             Console.WriteLine($"Someone cured Gimli. Gimli now has ❤️ {gimli.Health}");
+
+            Assasin talion = new Assasin("Talion");
+
+            talion.ReceiveAttack(gimli);
+            Console.WriteLine($"Gimli attacks Talion with ⚔️ {gimli.AttackValue}");
+            Console.WriteLine($"Talion has ❤️ {talion.Health}");
+
+            gimli.ReceiveAttack(talion);
+            Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
         }
     }
 }
