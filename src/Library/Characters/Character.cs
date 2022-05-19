@@ -51,6 +51,7 @@ namespace RoleplayGame
             get
             {
                 int value = 0;
+
                 foreach (IItem item in this.items)
                 {
                     if (item is IAttackItem)
@@ -67,6 +68,7 @@ namespace RoleplayGame
             get
             {
                 int value = 0;
+
                 foreach (IItem item in this.items)
                 {
                     if (item is IDefenseItem)
@@ -96,6 +98,7 @@ namespace RoleplayGame
         public virtual void ReceiveAttack(Character attacker)
         {
             int damage = attacker.AttackValue;
+
             if (this.DefenseValue < damage)
             {
                 this.Health -= damage - this.DefenseValue;
