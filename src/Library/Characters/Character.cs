@@ -1,21 +1,98 @@
+using System.Collections.Generic;
+
 namespace RoleplayGame
 {
     public abstract class Character
     {
-        string Name { get; set; }
+        protected int health = 100;
+        protected List<IItem> items = new List<IItem>();
+        protected int victorypoints = 0;
 
-        int Health { get; }
+        protected Character(string name)
+        {
+            this.Name = name;
+        }
 
-        int AttackValue { get; }
+        public string Name { get; protected set; }
 
-        int DefenseValue { get; }
 
-        public abstract void AddItem(IItem item);
+        public int Health
+        {
+            get
+            {
+                return this.health;
+            }
+            protected set
+            {
+                this.health = value < 0 ? 0 : value;
+            }
+        }
 
-        public abstract void RemoveItem(IItem item);
+        public int VictoryPoints
+        {
+            get
+            {
+                return this.victorypoints;
+            }
+            protected set
+            {
+                this.victorypoints = value < 0 ? 0 : value;
+            }
+        }
 
-        public abstract void Cure();
+        public virtual int AttackValue
+        {
+            get
+            {
+                int value = 0;
+                foreach (IItem item in this.items)
+                {
+                    if (item is IAttackItem)
+                    {
+                        value += (item as IAttackItem).AttackValue;
+                    }
+                }
+                return value;
+            }
+        }
 
-        public abstract void ReceiveAttack(int power);
+        public virtual int DefenseValue
+        {
+            get
+            {
+                int value = 0;
+                foreach (IItem item in this.items)
+                {
+                    if (item is IDefenseItem)
+                    {
+                        value += (item as IDefenseItem).DefenseValue;
+                    }
+                }
+                return value;
+            }
+        }
+
+        public virtual void AddItem(IItem item)
+        {
+            this.items.Add(item);
+        }
+
+        public virtual void RemoveItem(IItem item)
+        {
+            this.items.Remove(item);
+        }
+
+        public virtual void Cure()
+        {
+            this.Health = 100;
+        }
+
+        public virtual void ReceiveAttack(Character attacker)
+        {
+            if (this.DefenseValue < attacker.AttackValue)
+            {
+                this.Health -= attacker.AttackValue - this.DefenseValue;
+            }
+        }
     }
 }
