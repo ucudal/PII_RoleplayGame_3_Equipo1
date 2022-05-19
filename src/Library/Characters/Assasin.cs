@@ -51,6 +51,7 @@ namespace RoleplayGame
             {
                 Random CriticalChance = new Random();
                 int value = 0;
+
                 foreach (IItem item in this.items)
                 {
                     if (item is IAttackItem)
@@ -62,7 +63,6 @@ namespace RoleplayGame
                 {
                     value = value * 2;
                     return value;
-                    
                 }
                 else
                 {
@@ -74,6 +74,7 @@ namespace RoleplayGame
         public override void ReceiveAttack(Character attacker)
         {
             Random DodgeChance = new Random();
+
             if (this.DefenseValue < attacker.AttackValue)
             {
                 if (DodgeChance.Next(1,11) <= Dodge)
