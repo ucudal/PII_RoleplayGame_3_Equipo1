@@ -20,7 +20,8 @@ namespace Program
             Console.WriteLine($"Gandalf attacks Gimli with ⚔️ {gandalf.AttackValue}");
 
             gimli.ReceiveAttack(gandalf);
-
+            Console.WriteLine("valor ataque gandalf: ");
+            Console.WriteLine(gandalf.AttackValue);
             Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
 
             gimli.Cure();
@@ -35,6 +36,18 @@ namespace Program
 
             gimli.ReceiveAttack(talion);
             Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
+
+            Witch triss = new Witch("Triss");
+            triss.ReceiveAttack(gimli);
+            Console.WriteLine($"Gimli attacks Triss with ⚔️ {gimli.AttackValue}");
+            Console.WriteLine($"Triss has ❤️ {triss.Health}");
+            
+            gimli.ReceiveAttack(triss);
+            Console.WriteLine($"gimli has ❤️ {gimli.Health}");
+
+            Wizard mago = new Wizard("mago");
+            triss.ReceiveAttack(mago);
+            Console.WriteLine($"Triss has ❤️ {gimli.Health}");        
         }
     }
 }

@@ -4,7 +4,8 @@ namespace RoleplayGame
 {
     public class Assasin : Enemies
     {
-        
+        private int criticalstrike =4;
+        private int dodge = 2;
         public Assasin(string name)
         : base(name)
         {
@@ -13,6 +14,37 @@ namespace RoleplayGame
             this.AddItem(new LeatherArmor());
         }
 
+        public int criticalStrike
+        {
+            get
+            {
+                return this.criticalstrike;
+            }
+            private set
+            {
+                this.criticalstrike = value;
+            }
+        }
+        public int Dodge
+        {
+            get
+            {
+                return this.dodge;
+            }
+            private set
+            {
+                this.dodge = value;
+            }
+        }
+        public void ChangeCriticalChance(int value)
+        {
+            this.criticalStrike = value;
+        }
+
+        public void ChangeDodgeChance(int value)
+        {
+            this.Dodge = value;
+        }
         public override int AttackValue
         {
             get
@@ -26,7 +58,7 @@ namespace RoleplayGame
                         value += (item as IAttackItem).AttackValue;                    
                     }
                 }
-                if (CriticalChance.Next(1,11) <= 4)
+                if (CriticalChance.Next(1,11) <= criticalStrike)
                 {
                     value = value * 2;
                     return value;
@@ -44,9 +76,9 @@ namespace RoleplayGame
             Random DodgeChance = new Random();
             if (this.DefenseValue < attacker.AttackValue)
             {
-                if (DodgeChance.Next(1,11) <= 2)
+                if (DodgeChance.Next(1,11) <= Dodge)
                 {
-                    Console.WriteLine($"{this.Name} ha esquivado un golpe de {attacker.AttackValue}⚔️");
+                    Console.WriteLine($"{this.Name} has dodged an attack from {attacker.AttackValue}⚔️");
                 }
                 else
                 {                    
