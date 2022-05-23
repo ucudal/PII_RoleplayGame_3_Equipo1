@@ -1,11 +1,14 @@
+using System;
+using System.Collections.Generic;
+
 namespace RoleplayGame
 {
   public class Encounter
   {
-    public List<Enemies> ListOfEnemies;
-    public List<Heroes> ListOfHeroes;
+    public List<Enemy> ListOfEnemies;
+    public List<Hero> ListOfHeroes;
 
-    public Encounter(List<IEnemies> enemies, List<Heroes> heroes)
+    public Encounter(List<Enemy> enemies, List<Hero> heroes)
     {
       this.ListOfEnemies = enemies;
       this.ListOfHeroes = heroes;
@@ -13,8 +16,8 @@ namespace RoleplayGame
 
     void DoEncounter()
     {
-      List<Enemies> enemies = this.ListOfEnemies;
-      List<Heroes> heroes = this.ListOfHeroes;
+      List<Enemy> enemies = this.ListOfEnemies;
+      List<Hero> heroes = this.ListOfHeroes;
 
       if (enemies.Length >= 1 && heroes.Length >= 1)
       {
@@ -24,21 +27,21 @@ namespace RoleplayGame
           {
             int i = 0;
 
-            foreach (Enemies enemy in enemies)
+            foreach (Enemy enemy in enemies)
             {
-              Heroes[i].ReceiveAttack(enemy);
+              Hero[i].ReceiveAttack(enemy);
 
               i++;
             }
 
             int i = 0;
 
-            foreach (Heroes hero in heroes)
+            foreach (Hero hero in heroes)
             {
-              Enemies enemy =  enemies[i];
+              Enemy enemy =  enemies[i];
               enemy.ReceiveAttack(hero);
 
-              if (enemy.health <= 0)
+              if (enemy.Health <= 0)
                 {
                   hero.AbsorbVictoryPoints(enemy);
 
@@ -61,7 +64,7 @@ namespace RoleplayGame
 
             int i = 1;
 
-            foreach (Enemies enemy in enemies)
+            foreach (Enemy enemy in enemies)
             {
               if (i == heroes.Length)
               {
@@ -74,12 +77,12 @@ namespace RoleplayGame
             //  Luego cada heroe le pega a cada enemigo de manera normal
             int i = 0;
 
-            foreach (Heroes hero in heroes)
+            foreach (Hero hero in heroes)
             {
-              Enemies enemy =  enemies[i];
+              Enemy enemy =  enemies[i];
               enemy.ReceiveAttack(hero);
 
-              if (enemy.health <= 0)
+              if (enemy.Health <= 0)
                 {
                   hero.AbsorbVictoryPoints(enemy);
 
@@ -103,9 +106,9 @@ namespace RoleplayGame
             int i = 0;
 
             // Los enemigos atacan primero de manera normal
-            foreach (Enemies enemy in enemies)
+            foreach (Enemy enemy in enemies)
             {
-              Heroes[i].ReceiveAttack(enemy);
+              Hero[i].ReceiveAttack(enemy);
 
               i++;
             }
@@ -113,16 +116,16 @@ namespace RoleplayGame
             int i = 1;
 
             // Se repite lo mismo que el if anterior
-            foreach (Heroes hero in heroes)
+            foreach (Hero hero in heroes)
             {
               if (i == enemies.Length)
               {
                 i = 0;
               } else {
-                Enemies enemy = enemies[i];
+                Enemy enemy = enemies[i];
                 enemy.ReceiveAttack(hero);
 
-                if (enemy.health <= 0)
+                if (enemy.Health <= 0)
                 {
                   hero.AbsorbVictoryPoints(enemy);
 
@@ -139,7 +142,7 @@ namespace RoleplayGame
           if (heroes.Length == 1 && enemies.Length >= 1)
           {
             // Todos los enemigos le pegan al primer heroe
-            foreach (Enemies enemy in enemies)
+            foreach (Enemy enemy in enemies)
             {
               heroes[0].ReceiveAttack(enemy);
             }
@@ -155,14 +158,14 @@ namespace RoleplayGame
     
     private void removeDeadCharacters()
     {
-      foreach (Enemies enemy in this.ListOfEnemies)
+      foreach (Enemy enemy in this.ListOfEnemies)
       {
-        if (enemy.health <= 0) { this.ListOfEnemies.Remove(enemy); }
+        if (enemy.Health <= 0) { this.ListOfEnemies.Remove(enemy); }
       }
 
-      foreach (Heroes hero in this.ListOfHeroes)
+      foreach (Hero hero in this.ListOfHeroes)
       {
-        if (hero.health <= 0) { this.ListOfHeroes.Remove(hero); }
+        if (hero.Health <= 0) { this.ListOfHeroes.Remove(hero); }
       }
     }
   }
