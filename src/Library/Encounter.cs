@@ -30,13 +30,16 @@ namespace RoleplayGame
 
             foreach (Enemy enemy in enemies)
             {
+
               Hero hero = heroes[i];
               hero.ReceiveAttack(enemy);
+
 
               i++;
             }
 
             //int i = 0;
+
 
             foreach (Hero hero in heroes)
             {
@@ -51,6 +54,7 @@ namespace RoleplayGame
                   if (hero.VictoryPoints >= 5)
                   {
                     hero.Cure();
+
                   }
                 }
 
@@ -90,8 +94,8 @@ namespace RoleplayGame
 
                   if (hero.VictoryPoints >= 5)
                   {
-                    hero.Cure();
-                    
+                    hero.Cure();                    
+
                   }
                 }
 
@@ -112,7 +116,6 @@ namespace RoleplayGame
             {
               Hero hero = heroes[i];
               hero.ReceiveAttack(enemy);
-
               i++;
             }
 
@@ -140,8 +143,8 @@ namespace RoleplayGame
               }
             }
           }
-  
           if (heroes.Count == 1 && enemies.Count >= 1)
+
           {
             // Todos los enemigos le pegan al primer heroe
             foreach (Enemy enemy in enemies)
