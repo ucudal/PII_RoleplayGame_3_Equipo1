@@ -36,6 +36,7 @@ namespace Program
 
             gimli.ReceiveAttack(talion);
             Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
+    
 
             Witch triss = new Witch("Triss");
             triss.ReceiveAttack(gimli);
