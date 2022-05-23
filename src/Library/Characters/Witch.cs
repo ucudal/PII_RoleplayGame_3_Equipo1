@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System;
 namespace RoleplayGame
 {
-    public class Witch : MagicEnemies
+    public class Witch : MagicEnemy
     {
         public Witch(string name)
         :base (name)

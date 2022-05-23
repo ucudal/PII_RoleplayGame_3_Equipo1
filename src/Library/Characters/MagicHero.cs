@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public abstract class MagicEnemies : Enemies
+    public abstract class MagicHero : Hero
     {
         protected List<IMagicalItem> magicalItems = new List<IMagicalItem>();
 
-        protected MagicEnemies(string name)
+        protected MagicHero(string name)
         : base(name)
         {
 
@@ -20,5 +20,6 @@ namespace RoleplayGame
         {
             this.magicalItems.Remove(item);
         }
+        
     }
 }
