@@ -19,6 +19,7 @@ namespace RoleplayGame
       List<Enemy> enemies = this.ListOfEnemies;
       List<Hero> heroes = this.ListOfHeroes;
 
+
       if (enemies.Length >= 1 && heroes.Length >= 1)
       {
         while ( enemies.Length != 0 || heroes.Length != 0 )
@@ -42,6 +43,7 @@ namespace RoleplayGame
               enemy.ReceiveAttack(hero);
 
               if (enemy.Health <= 0)
+
                 {
                   hero.AbsorbVictoryPoints(enemy);
 
