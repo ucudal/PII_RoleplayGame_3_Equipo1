@@ -1,4 +1,3 @@
-/*
 using System;
 using System.Collections.Generic;
 
@@ -21,22 +20,26 @@ namespace RoleplayGame
       List<Hero> heroes = this.ListOfHeroes;
 
 
-      if (enemies.Length >= 1 && heroes.Length >= 1)
+      if (enemies.Count >= 1 && heroes.Count >= 1)
       {
-        while ( enemies.Length != 0 || heroes.Length != 0 )
+        while ( enemies.Count != 0 || heroes.Count != 0 )
         {
-          if (enemies.Length == heroes.Length)
+          if (enemies.Count == heroes.Count)
           {
             int i = 0;
 
             foreach (Enemy enemy in enemies)
             {
-              Hero[i].ReceiveAttack(enemy);
+
+              Hero hero = heroes[i];
+              hero.ReceiveAttack(enemy);
+
 
               i++;
             }
 
-            int i = 0;
+            //int i = 0;
+
 
             foreach (Hero hero in heroes)
             {
@@ -51,7 +54,7 @@ namespace RoleplayGame
                   if (hero.VictoryPoints >= 5)
                   {
                     hero.Cure();
-                    hero.VictoryPoints -= 5;
+
                   }
                 }
 
@@ -59,7 +62,7 @@ namespace RoleplayGame
             }
           }
           
-          if (enemies.Length > heroes.Length && heroes.Length > 1)
+          if (enemies.Count > heroes.Count && heroes.Count > 1)
           {
             // En este bloque de codigo, cada enemigo le pega al siguiente heroe de su posicion.
             // Por ejemplo: El primer enemigo le pega al segundo heroe, y asi sucesivamente por cada enemigo
@@ -69,7 +72,7 @@ namespace RoleplayGame
 
             foreach (Enemy enemy in enemies)
             {
-              if (i == heroes.Length)
+              if (i == heroes.Count)
               {
                 i = 0;
               } else {
@@ -78,7 +81,7 @@ namespace RoleplayGame
             }
 
             //  Luego cada heroe le pega a cada enemigo de manera normal
-            int i = 0;
+            //int i = 0;
 
             foreach (Hero hero in heroes)
             {
@@ -91,8 +94,8 @@ namespace RoleplayGame
 
                   if (hero.VictoryPoints >= 5)
                   {
-                    hero.Cure();
-                    hero.VictoryPoints -= 5;
+                    hero.Cure();                    
+
                   }
                 }
 
@@ -100,7 +103,7 @@ namespace RoleplayGame
             }
           }
 
-          if (enemies.Length < heroes.Length && enemies.Length > 1)
+          if (enemies.Count < heroes.Count && enemies.Count > 1)
           {
             // Este bloque hace lo mismo que el anterior, pero para los heroes
             // Esto decidimos hacerlo nosotros debido a que la letra no lo dejaba claro
@@ -111,17 +114,17 @@ namespace RoleplayGame
             // Los enemigos atacan primero de manera normal
             foreach (Enemy enemy in enemies)
             {
-              Hero[i].ReceiveAttack(enemy);
-
+              Hero hero = heroes[i];
+              hero.ReceiveAttack(enemy);
               i++;
             }
 
-            int i = 1;
+            //int i = 1;
 
             // Se repite lo mismo que el if anterior
             foreach (Hero hero in heroes)
             {
-              if (i == enemies.Length)
+              if (i == enemies.Count)
               {
                 i = 0;
               } else {
@@ -135,14 +138,13 @@ namespace RoleplayGame
                   if (hero.VictoryPoints >= 5)
                   {
                     hero.Cure();
-                    hero.VictoryPoints -= 5;
                   }
                 }
               }
             }
           }
-  
-          if (heroes.Length == 1 && enemies.Length >= 1)
+          if (heroes.Count == 1 && enemies.Count >= 1)
+
           {
             // Todos los enemigos le pegan al primer heroe
             foreach (Enemy enemy in enemies)
@@ -173,4 +175,3 @@ namespace RoleplayGame
     }
   }
 }
-*/
