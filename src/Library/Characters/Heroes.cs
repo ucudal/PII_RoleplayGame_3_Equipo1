@@ -12,7 +12,5 @@ namespace RoleplayGame
         {
             this.VictoryPoints += defeatedEnemy.VictoryPoints;
         }
-
-        
     }
 }
