@@ -3,6 +3,10 @@ using System;
 
 namespace RoleplayGame
 {
+    /// <summary>
+    /// Clase abstracta creada para aplicar herencia, esta clase actua como molde para que sus subclases "Hero"
+    /// y "Enemy" tengan todos los argumentos en común necesarios para evitar reescribir código inecesariamnete, haciendo el desarrollo más eficiente.  
+    /// </summary>
     public abstract class Character
     {                
         protected int health = 100;

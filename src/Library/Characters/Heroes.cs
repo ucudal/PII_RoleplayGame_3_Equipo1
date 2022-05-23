@@ -1,14 +1,14 @@
 namespace RoleplayGame
 {
-    public class Heroes : Character
+    public class Hero : Character
     {
-        protected Heroes(string name)
+        protected Hero(string name)
         : base(name)
         {
 
         }
 
-        public virtual void AbsorbVictoryPoints(Enemies defeatedEnemy)
+        public virtual void AbsorbVictoryPoints(Enemy defeatedEnemy)
         {
             this.VictoryPoints += defeatedEnemy.VictoryPoints;
         }

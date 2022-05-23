@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Archer : Heroes
+    public class Archer : Hero
     {
         public Archer(string name)
         : base(name)

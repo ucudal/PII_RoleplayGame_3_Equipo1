@@ -1,9 +1,9 @@
 namespace RoleplayGame
 {
-    public class Enemies : Character
+    public class Enemy : Character
     {
 
-        protected Enemies(string name)
+        protected Enemy(string name)
         : base(name)
         {
             this.side = "Enemy";

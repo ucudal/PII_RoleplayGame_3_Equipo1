@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Dwarf : Heroes
+    public class Dwarf : Hero
     {
         public Dwarf(string name)
         : base(name)
